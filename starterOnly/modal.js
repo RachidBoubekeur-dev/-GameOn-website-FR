@@ -40,11 +40,13 @@ buttonClose.addEventListener("click", closeModal);
 // launch modal form
 function launchModal() {
   modalBg.style.display = "block";
+  modalBg.style.animationName = "modalbgroundopen";
   content.style.animationName = "modalopen";
 }
 
 // close modal form
 function closeModal() {
+  modalBg.style.animationName = "modalbgroundclose";
   content.style.animationName = "modalclose";
   setTimeout(function () { modalBg.style.display = "none"; }, 725);
 }
@@ -89,7 +91,7 @@ submitForm.addEventListener('submit', function (event) {
                 document.querySelector("#errorForm7").style.display = "none";
                 document.querySelector("form").style.display = "none";
                 modalBody.style.display = "flex";
-                modalBody.style.height = "26em";
+                modalBody.style.height = "29em";
                 ValideForm.style.display = "block";
 
               } else {
