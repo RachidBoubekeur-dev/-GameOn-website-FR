@@ -55,70 +55,78 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form name="reserve" action="index.html" method="get">
             <div class="formData">
-              <label>Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+              <label for="first">Prénom</label><br>
+              <input class="text-control" type="text" id="first" name="first" aria-label="Renseignez votre prénom" aria-describedby="first" minlength="2" pattern="^[a-z ,.'-éèàâêûîôäëüïöù][^0-9]+$" required aria-required="true"/><br>
+              <span class="errorForm" id="errorForm1">Veuillez entrer votre prénom</span>
             </div>
             <div class="formData">
-              <label>Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last" /><br>
+              <label for="last">Nom</label><br>
+              <input class="text-control" type="text" id="last" name="last" aria-label="Renseignez votre nom" aria-describedby="last" minlength="2" pattern="^[a-z ,.'-éèàâêûîôäëüïöù][^0-9]+$" required aria-required="true" /><br>
+              <span class="errorForm" id="errorForm2">Veuillez entrer votre nom</span>
             </div>
             <div class="formData">
-              <label>E-mail</label><br>
-              <input class="text-control" type="email" id="email" name="email" /><br>
+              <label for="email">E-mail</label><br>
+              <input class="text-control" type="email" id="email" name="email" aria-label="Renseignez votre e-mail" aria-describedby="email" required aria-required="true" /><br>
+              <span class="errorForm" id="errorForm3">Veuillez entrer une e-mail valide</span>
             </div>
             <div class="formData">
-              <label>Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+              <label for="birthdate">Date de naissance</label><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" aria-label="Renseignez votre date de naissance" aria-describedby="birthdate" min="1920-01-01" max="2009-01-01" value="2000-03-22" required aria-required="true" /><br>
+              <span class="errorForm" id="errorForm4">Veuillez entrer votre date de naissance</span>
             </div>
             <div class="formData">
-              <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <input type="number" class="text-control" id="quantity" name="quantity" aria-label="À combien de tournois GameOn avez-vous déjà participé ?" aria-describedby="quantity" min="0" max="99" required aria-required="true" /><br>
+              <span class="errorForm" id="errorForm5">Veuillez entrer un nombre de 0 à 99</span>
             </div>
             <p class="text-label">Quelles villes ?</p>
             <div class="formData">
-              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
+              <input class="checkbox-input" type="radio" id="location1" name="location" aria-label="New York" aria-describedby="location1" value="New York" checked />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label>
-              <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco" />
+              <input class="checkbox-input" type="radio" id="location2" name="location" aria-label="San Francisco" aria-describedby="location2" value="San Francisco" />
               <label class="checkbox-label" for="location2">
                 <span class="checkbox-icon"></span>
                 San Francisco</label>
-              <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle" />
+              <input class="checkbox-input" type="radio" id="location3" name="location" aria-label="Seattle" aria-describedby="location3" value="Seattle" />
               <label class="checkbox-label" for="location3">
                 <span class="checkbox-icon"></span>
                 Seattle</label>
-              <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago" />
+              <input class="checkbox-input" type="radio" id="location4" name="location" aria-label="Chicago" aria-describedby="location4" value="Chicago" />
               <label class="checkbox-label" for="location4">
                 <span class="checkbox-icon"></span>
                 Chicago</label>
-              <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" />
+              <input class="checkbox-input" type="radio" id="location5" name="location" aria-label="Boston" aria-describedby="location5" value="Boston" />
               <label class="checkbox-label" for="location5">
                 <span class="checkbox-icon"></span>
                 Boston</label>
-              <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland" />
+              <input class="checkbox-input" type="radio" id="location6" name="location" aria-label="Portland" aria-describedby="location6" value="Portland" />
               <label class="checkbox-label" for="location6">
                 <span class="checkbox-icon"></span>
                 Portland</label>
+              <br>
+              <span class="errorForm" id="errorForm6">Veuillez sélectionner une ville</span>
             </div>
 
             <div class="formData">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
-              <label class="checkbox2-label" for="checkbox1" required>
+              <input class="checkbox-input" type="checkbox" id="checkbox1" aria-label="J'ai lu et accepté les conditions d'utilisation." aria-describedby="checkbox1" required aria-required="true"/>
+              <label class="checkbox2-label" for="checkbox1">
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
               <br>
-              <input class="checkbox-input" type="checkbox" id="checkbox2" />
+              <span class="errorForm" id="errorForm7">Veuillez accepté les conditions d'utilisation</span>
+              <input class="checkbox-input" type="checkbox" id="checkbox2" aria-label="Je souhaite être prévenu des prochains évènements." aria-describedby="checkbox2" />
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>
-                Je Je souhaite être prévenu des prochains évènements.
+                Je souhaite être prévenu des prochains évènements.
               </label>
               <br>
             </div>
-            <input class="btn-submit" type="submit" class="button" value="C'est parti" />
+            <input class="btn-submit" type="submit" class="button" id="submit" value="C'est parti" aria-describedby="C'est parti" />
           </form>
         </div>
       </div>

@@ -110,9 +110,6 @@ main {
   padding-right: 2vw;
   margin: 1px 20px 15px;
   border-radius: 2rem;
-  text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -198,6 +195,11 @@ input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
+}
+.errorForm {
+  display: none;
+  color: red;
+  font-size: 0.6em;
 }
 .text-control {
   margin: 0;
