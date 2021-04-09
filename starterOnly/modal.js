@@ -9,10 +9,12 @@ function editNav() {
 
 // DOM Elements
 const modalBg = document.querySelector(".bground");
+const modalBody = document.querySelector(".modal-body");
+const ValideForm = document.querySelector(".divValideForm");
 const closeBtn = document.querySelector(".close");
+const buttonClose = document.querySelector("#buttonClose");
 const content = document.querySelector(".content");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 
 // DOM Elements form
 const submitForm = document.querySelector("form");
@@ -33,6 +35,7 @@ const regexAlpha = /^[a-z ,.'-éèàâêûîôäëüïöù][^0-9]+$/;
 // modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeBtn.addEventListener("click", closeModal);
+buttonClose.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
@@ -49,27 +52,30 @@ function closeModal() {
 // control form
 submitForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  
-  if(firstInputForm.value.length >= 2 && regexAlpha.test(firstInputForm.value)) {
+
+  if (firstInputForm.value.length >= 2 && regexAlpha.test(firstInputForm.value)) {
     firstInputForm.style.border = "0px solid red";
     document.querySelector("#errorForm1").style.display = "none";
-    if(lastInputForm.value.length >= 2 && regexAlpha.test(lastInputForm.value)) {
+    if (lastInputForm.value.length >= 2 && regexAlpha.test(lastInputForm.value)) {
       lastInputForm.style.border = "0px solid red";
       document.querySelector("#errorForm2").style.display = "none";
-      if(emailInputForm.validity.valid) {
+      if (emailInputForm.validity.valid) {
         emailInputForm.style.border = "0px solid red";
         document.querySelector("#errorForm3").style.display = "none";
-        if(birthdateInputForm.value.length >= 6) {
+        if (birthdateInputForm.value.length >= 6) {
           birthdateInputForm.style.border = "0px solid red";
           document.querySelector("#errorForm4").style.display = "none";
-          if(!isNaN(quantityInputForm.value) && quantityInputForm.value >= 0 && quantityInputForm.value <= 99) {
+          if (!isNaN(quantityInputForm.value) && quantityInputForm.value >= 0 && quantityInputForm.value <= 99) {
             quantityInputForm.style.border = "0px solid red";
             document.querySelector("#errorForm5").style.display = "none";
-            if(location1InputForm.checked === true || location2InputForm.checked === true || location3InputForm.checked === true || location4InputForm.checked === true || location5InputForm.checked === true || location6InputForm.checked === true) {
+            if (location1InputForm.checked === true || location2InputForm.checked === true || location3InputForm.checked === true || location4InputForm.checked === true || location5InputForm.checked === true || location6InputForm.checked === true) {
               document.querySelector("#errorForm6").style.display = "none";
-              if(checkbox1InputForm.checked === true) {
+              if (checkbox1InputForm.checked === true) {
                 document.querySelector("#errorForm7").style.display = "none";
-                alert('h');
+                document.querySelector("form").style.display = "none";
+                modalBody.style.display = "flex";
+                modalBody.style.height = "26em";
+                ValideForm.style.display = "block";
               } else {
                 document.querySelector("#errorForm7").style.display = "block";
               }
@@ -97,5 +103,3 @@ submitForm.addEventListener('submit', function (event) {
     document.querySelector("#errorForm1").style.display = "block";
   }
 });
-
-
