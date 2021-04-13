@@ -22,7 +22,7 @@ const firstInputForm = document.querySelector("#first");
 const lastInputForm = document.querySelector("#last");
 const emailInputForm = document.querySelector("#email");
 const birthdateInputForm = document.querySelector("#birthdate");
-const quantityInputForm = document.querySelector("#quantity");
+const locationDivForm = document.querySelector("#location");
 const location1InputForm = document.querySelector("#location1");
 const location2InputForm = document.querySelector("#location2");
 const location3InputForm = document.querySelector("#location3");
@@ -51,80 +51,105 @@ function closeModal() {
   setTimeout(function () { modalBg.style.display = "none"; }, 725);
 }
 
-// control form
-submitForm.addEventListener('submit', function (event) {
-  event.preventDefault();
+// let array default input valid
+let verifInputValid = [false, false, false, true, true, true];
 
-  // control input first
+// event control form input first
+firstInputForm.addEventListener('keyup', function () {
   if (firstInputForm.value.length >= 2 && regexAlpha.test(firstInputForm.value)) {
     firstInputForm.style.border = "0px solid red";
     document.querySelector("#errorForm1").style.display = "none";
-
-    // control input last
-    if (lastInputForm.value.length >= 2 && regexAlpha.test(lastInputForm.value)) {
-      lastInputForm.style.border = "0px solid red";
-      document.querySelector("#errorForm2").style.display = "none";
-
-      // control input email
-      if (emailInputForm.validity.valid) {
-        emailInputForm.style.border = "0px solid red";
-        document.querySelector("#errorForm3").style.display = "none";
-
-        // control input birthdate
-        if (birthdateInputForm.value.length >= 6) {
-          birthdateInputForm.style.border = "0px solid red";
-          document.querySelector("#errorForm4").style.display = "none";
-
-          // control input quantity
-          if (!isNaN(quantityInputForm.value) && quantityInputForm.value >= 0 && quantityInputForm.value <= 99) {
-            quantityInputForm.style.border = "0px solid red";
-            document.querySelector("#errorForm5").style.display = "none";
-
-            // control input location city
-            if (location1InputForm.checked === true || location2InputForm.checked === true || location3InputForm.checked === true || location4InputForm.checked === true || location5InputForm.checked === true || location6InputForm.checked === true) {
-              document.querySelector("#errorForm6").style.display = "none";
-
-              // control input checkbox1
-              if (checkbox1InputForm.checked === true) {
-
-                // if form is valid
-                document.querySelector("#errorForm7").style.display = "none";
-                document.querySelector("form").style.display = "none";
-                modalBody.style.display = "flex";
-                modalBody.style.height = "29em";
-                ValideForm.style.display = "block";
-
-              } else {
-                // error form input checkbox1
-                document.querySelector("#errorForm7").style.display = "block";
-              }
-            } else {
-              // error form input location city
-              document.querySelector("#errorForm6").style.display = "block";
-            }
-          } else {
-            // error form input quantity
-            quantityInputForm.style.border = "1px solid red";
-            document.querySelector("#errorForm5").style.display = "block";
-          }
-        } else {
-          // error form input birthdate
-          birthdateInputForm.style.border = "1px solid red";
-          document.querySelector("#errorForm4").style.display = "block";
-        }
-      } else {
-        // error form input email
-        emailInputForm.style.border = "1px solid red";
-        document.querySelector("#errorForm3").style.display = "block";
-      }
-    } else {
-      // error form input last
-      lastInputForm.style.border = "1px solid red";
-      document.querySelector("#errorForm2").style.display = "block";
-    }
+    verifInputValid[0] = true;
   } else {
-    // error form input first
     firstInputForm.style.border = "1px solid red";
     document.querySelector("#errorForm1").style.display = "block";
+    verifInputValid[0] = false;
+  }
+})
+
+// event control form input last
+lastInputForm.addEventListener('keyup', function () {
+  if (lastInputForm.value.length >= 2 && regexAlpha.test(lastInputForm.value)) {
+    lastInputForm.style.border = "0px solid red";
+    document.querySelector("#errorForm2").style.display = "none";
+    verifInputValid[1] = true;
+  } else {
+    lastInputForm.style.border = "1px solid red";
+    document.querySelector("#errorForm2").style.display = "block";
+    verifInputValid[1] = false;
+  }
+})
+
+// event control form input email
+emailInputForm.addEventListener('keyup', function () {
+  if (emailInputForm.validity.valid) {
+    emailInputForm.style.border = "0px solid red";
+    document.querySelector("#errorForm3").style.display = "none";
+    verifInputValid[2] = true;
+  } else {
+    emailInputForm.style.border = "1px solid red";
+    document.querySelector("#errorForm3").style.display = "block";
+    verifInputValid[2] = false;
+  }
+})
+
+// event control form input birthdate
+birthdateInputForm.addEventListener('keyup', function () {
+  if (birthdateInputForm.value.length >= 6 && birthdateInputForm.value.split('-')[0] >= 1950 && birthdateInputForm.value.split('-')[0] <= 2013) {
+    birthdateInputForm.style.border = "0px solid red";
+    document.querySelector("#errorForm4").style.display = "none";
+    verifInputValid[3] = true;
+  } else {
+    birthdateInputForm.style.border = "1px solid red";
+    document.querySelector("#errorForm4").style.display = "block";
+    verifInputValid[3] = false;
+  }
+})
+
+// event control form input location
+locationDivForm.addEventListener('click', function () {
+  if (location1InputForm.checked === true || location2InputForm.checked === true || location3InputForm.checked === true || location4InputForm.checked === true || location5InputForm.checked === true || location6InputForm.checked === true) {
+    document.querySelector("#errorForm5").style.display = "none";
+    verifInputValid[4] = true;
+  } else {
+    document.querySelector("#errorForm5").style.display = "block";
+    verifInputValid[4] = false;
+  }
+})
+
+// event control form input checkbox1
+checkbox1InputForm.addEventListener('click', function () {
+  if (checkbox1InputForm.checked === true) {
+    document.querySelector("#errorForm6").style.display = "none";
+    verifInputValid[5] = true;
+  } else {
+    document.querySelector("#errorForm6").style.display = "block";
+    verifInputValid[5] = false;
+  }
+})
+
+// event submit form
+submitForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  // control if all input is valid (true)
+  if (verifInputValid[0] === true && verifInputValid[1] === true && verifInputValid[2] === true && verifInputValid[3] === true && verifInputValid[4] === true && verifInputValid[5] === true) {
+
+    // if form is valid
+    document.querySelector("form").style.display = "none";
+    modalBody.style.display = "flex";
+    modalBody.style.height = "29em";
+    ValideForm.style.display = "block";
+
+  } else {
+    // error form input
+    let arrayInput = document.querySelectorAll('.inputControl');
+
+    for (let i = 0; i < arrayInput.length; i++) {
+      if (arrayInput[i].value.length <= 1) {
+        arrayInput[i].style.border = "1px solid red";
+        document.querySelector("#errorForm" + (i + 1)).style.display = "block";
+      }
+    }
   }
 });
