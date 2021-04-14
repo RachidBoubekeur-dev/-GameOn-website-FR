@@ -4,16 +4,18 @@
 <head>
   <meta charset="utf-8" />
   <title>Reservation</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="description" content="Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !" />
   <link rel="stylesheet" href="modal.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+  <script async src="modal.js"></script>
 </head>
 
 <body>
   <div class="topnav" id="myTopnav">
     <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="Logo.png" />
     </div>
     <div class="main-navbar">
 
@@ -26,7 +28,6 @@
         <i class="fa fa-bars"></i>
       </a>
     </div>
-  </div>
   </div>
   <main>
     <div class="hero-section">
@@ -139,8 +140,8 @@
               </label>
               <br>
             </div>
-            <input class="btn-submit" type="submit" class="button" id="submit" value="C'est parti"
-              aria-describedby="C'est parti" />
+            <input class="btn-submit button" type="submit" id="submit" value="C'est parti"
+              aria-label="C'est parti" />
           </form>
           <div class="divValideForm">
             <p>Thank you for submitting your registration details</p>
@@ -155,7 +156,6 @@
       Copyright 2014 - 2021, GameOn Inc.
     </p>
   </footer>
-  <script src="modal.js"></script>
 </body>
 
 </html>
