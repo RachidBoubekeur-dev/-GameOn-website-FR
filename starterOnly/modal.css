@@ -179,6 +179,11 @@ main {
   background: #3876ac;
 }
 
+.modal-btn > a {
+  color: white;
+  text-decoration: none;
+}
+
 .footer {
   margin: 20px;
   padding: 10px;
