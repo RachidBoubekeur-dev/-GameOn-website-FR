@@ -30,7 +30,7 @@ const location4InputForm = document.querySelector("#location4");
 const location5InputForm = document.querySelector("#location5");
 const location6InputForm = document.querySelector("#location6");
 const checkbox1InputForm = document.querySelector("#checkbox1");
-const regexAlpha = /^[a-z ,.'-éèàâêûîôäëüïöù][^0-9]+$/;
+const regexAlpha = /^[a-z -éèàâêûîôäëüïöù][^,.'0-9]+$/;
 
 // modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -56,7 +56,7 @@ let verifInputValid = [false, false, false, true, true, true];
 
 // event control form input first
 firstInputForm.addEventListener('keyup', function () {
-  if (firstInputForm.value.length >= 2 && regexAlpha.test(firstInputForm.value)) {
+  if (firstInputForm.value.split(' ').join('').length >= 2 && regexAlpha.test(firstInputForm.value)) {
     firstInputForm.style.border = "0px solid red";
     document.querySelector("#errorForm1").style.display = "none";
     verifInputValid[0] = true;
@@ -69,7 +69,7 @@ firstInputForm.addEventListener('keyup', function () {
 
 // event control form input last
 lastInputForm.addEventListener('keyup', function () {
-  if (lastInputForm.value.length >= 2 && regexAlpha.test(lastInputForm.value)) {
+  if (lastInputForm.value.split(' ').join('').length >= 2 && regexAlpha.test(lastInputForm.value)) {
     lastInputForm.style.border = "0px solid red";
     document.querySelector("#errorForm2").style.display = "none";
     verifInputValid[1] = true;
