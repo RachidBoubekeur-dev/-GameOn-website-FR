@@ -1,5 +1,20 @@
-# Projet GameOn
-1. Forkez ce repo ;
-2. Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;
-3. Il n'y a aucune dépendance ;
-4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
+![GameOn](https://raw.githubusercontent.com/RachidBoubekeur-dev/GameOn/master/starterOnly/Logo.png)
+## GameOn
+https://rachidboubekeur-dev.github.io/GameOn/starterOnly/index.html
+
+## 1. General information
+
+GameOn is project 4 of the OpenClassrooms training course of the front-end developers course.
+The project consists of adding the missing JavaScript code so that the form is fully functional.
+
+## 2. Skills assessed
+
+✔️ Programming in JavaScript.
+
+## 3. Project
+
+### 3.1 Launching the project
+
+1. To start, you will need to `git clone` the project on your machine via a command in your terminal: `git clone https://github.com/RachidBoubekeur-dev/GameOn.git`.
+
+2. Still in your terminal, go to the newly created folder GameOn.
